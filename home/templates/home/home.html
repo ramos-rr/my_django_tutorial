@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>MySite - Home</title>
+</head>
+<body>
+<h1>HOME de MySite</h1>
+<h1> Selecione uma opção abaixo para navegar:</h1>
+{% if menu_list %}
+    {% for menu in menu_list %}
+        <li><a href="/{{ menu }}">{{ menu }}</a></li><br>
+    {% endfor %}
+{% else %}
+<p> Menu indisponível no momento</p>
+{% endif %}
+</body>
+</html>

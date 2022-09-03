@@ -18,3 +18,19 @@ Implementing a Django Website with Django Documentation<br>
 - [PART 6 - STATIC FILES](https://docs.djangoproject.com/en/4.1/intro/tutorial06/)<br>
 <br>
 - [PART 7 - CUSTOMIZNG THE ADMIN SITE](https://docs.djangoproject.com/en/4.1/intro/tutorial07/)<br>
+<br>
+## TIPS: create a question and a choice commands<br>
+##### Create a Question
+- Run: `python manage.py shell` to activate django terminal;<br>
+- Run: `>>> from from polls.models import Choice, Question`;<br>
+- Run: `>>> from from django.utils import timezone`;<br>
+- Create a question: `>>> q = Question.objects.create(question_text='..text..', pub_date=timezone.now()`
+- Get ID: `>>> q.id`;<br>
+- Filter by int: `>>> Question.objects.filter(id=4)` or `>>> Question.objects.get(pk=4)`;<br>
+- Filter by str: `>>> Question.objects.filter(question_text__startswith="Is it")`;<br>
+- Filter by date (past): `>>> Question.objects.filter(pub_date__lte=timezone.now())`;<br>
+##### Manage Choices for this question
+- See all Choices: `>>> q.choice_set.all()`;<br>
+- Create Choice for question: `>>> q.choice_set.create(choice_text='..text..', votes=0`;<br>
+- See how many choice is there: `>>> q.choice_set.count()`;<br>
+- 

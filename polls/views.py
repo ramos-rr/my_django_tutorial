@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import Question, Choice
 from django.views import generic
+from django.utils import timezone
 
 # EXEMPLO UTILIZANDO LOADER FROM DJANGO.TEMPLATE
 # def index(request):
@@ -43,12 +44,20 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         """Retorna as 5 últimas pesquisas"""
-        return Question.objects.order_by('-pub_date')[:5]
+        # Abaixo, meu jeito de fazer o filtro para não aparecer pergunta futura
+        # questions = [poll for poll in Question.objects.order_by('-pub_date')[:5] if poll.pub_date <= timezone.now()]
+        # return questions
+        return Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
+        # REMEMBER: filter(pub_date__lte=date) ir to return dates equals or anterior from the date set as parameter.
 
 
 class DetailView(generic.DetailView):
     model = Question
     template_name = 'polls/detail.html'
+
+    def get_queryset(self):
+        """ Excludes any future question from being displayed"""
+        return Question.objects.filter(pub_date__lte=timezone.now())
 
 
 class ResultsView(generic.DetailView):

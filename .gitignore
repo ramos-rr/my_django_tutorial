@@ -1,6 +1,4 @@
-# Virtual Environment
-.idea
+# Default ignored files
 .venv
+.idea
 
-# Cache
-/__pycache__/

@@ -33,4 +33,5 @@ Implementing a Django Website with Django Documentation<br>
 - See all Choices: `>>> q.choice_set.all()`;<br>
 - Create Choice for question: `>>> q.choice_set.create(choice_text='..text..', votes=0`;<br>
 - See how many choice is there: `>>> q.choice_set.count()`;<br>
-- 
+- Set choice as variable: `>>> c = q.choice_set.filter(choice_text='..text..')`
+- Delete choice: `>>> c.delete()`

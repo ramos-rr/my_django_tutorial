@@ -2,7 +2,7 @@
 
 Implementing a Django Website with Django Documentation<br>
 
-## TUTORIAL
+## BASIC TUTORIAL
 
 ### First Steps
 - [PART 1 - REQUEST AND RESPONSES](https://docs.djangoproject.com/en/4.1/intro/tutorial01/)<br>

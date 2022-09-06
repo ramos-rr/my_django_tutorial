@@ -98,6 +98,7 @@ class QuestionDetailViewTest(TestCase):
     def test_past_question(self):
         """The detail view of a question with a pub_date in the past displays the question's text."""
         past_question = create_question(question_text='past question', days=-5)
+        # print(past_question.id)
         url = reverse('polls:detail', args=(past_question.id,))
         response = self.client.get(url)
         self.assertContains(response, past_question.question_text)
@@ -108,4 +109,9 @@ class ChoiceCreationTest(TestCase):
     def test_create_choice(self):
         question = create_question('teste', -1)
         choice = question.choice_set.create(choice_text='Choice1', votes=0)
-        self.assertContains(Question.choice_set.all(), choice.choice_text)
+        url = reverse('polls:vote', args=(question.id,))
+        print(url)
+        response = self.client.get(url)
+        print(response)
+        assert response is not None
+

@@ -3,3 +3,5 @@ max-line-length=127
 exclude= .venv,
  .idea,
   main.py,
+  /*tests.py,
+  /*migrations/

@@ -2,3 +2,8 @@
 .venv
 .idea
 
+# HTML test coverage index
+htmlcov
+
+# Pytest cache
+.pytest_cache

@@ -110,8 +110,6 @@ class ChoiceCreationTest(TestCase):
         question = create_question('teste', -1)
         choice = question.choice_set.create(choice_text='Choice1', votes=0)
         url = reverse('polls:vote', args=(question.id,))
-        print(url)
         response = self.client.get(url)
-        print(response)
         assert response is not None
 
